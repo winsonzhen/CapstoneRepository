@@ -6,8 +6,6 @@ from app.classes.data import Sleep, User
 from app.classes.forms import SleepForm, ConsentForm
 from flask_login import login_required
 import datetime as dt
-import matplotlib.pyplot as plt
-#import numpy as np
 
 @app.route('/consent', methods=['GET', 'POST'])
 def consent():
