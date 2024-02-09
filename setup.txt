@@ -56,7 +56,7 @@ window pane. Then open a new terminal by going to the Terminal menu at the top o
 
 # Type this command
 python -m pip
-schMac users: python3 -m pip
+Mac users: python3 -m pip
 
 # It should report back to you how to use pip. If it doesn't understand 'pip' as a 
 # command then you have a bigger problem. Did you install Anaconda? Did you click the checkboxes in the instructions
@@ -69,12 +69,12 @@ schMac users: python3 -m pip
 # If it is already installed lets make sure it is updated.
 
 python -m pip install --upgrade pip
-(Mac users, ugh, type: python3 -m pip install --upgrade pip)
+(Mac users, type: python3 -m pip install --upgrade pip)
 
 # The next command will install all the packages that are listed in the "requirements.txt" file
 
 python -m pip install -r requirements.txt
-(schMac users will type: python3 -m pip install -r requirements.txt)
+(Mac users will type: python3 -m pip install -r requirements.txt)
 
 # if you get an error READ IT. If it says you don't have access you need to use the '--user'
 # option.  See the command below.  You can add --user to any pip command.
