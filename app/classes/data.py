@@ -99,3 +99,16 @@ class Clinic(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Animal(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    animaltype = StringField()
+    animalname = StringField()
+    animalgender = StringField()
+    animalage = IntField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+    

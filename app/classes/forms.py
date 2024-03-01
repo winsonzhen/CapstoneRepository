@@ -52,3 +52,10 @@ class ClinicForm(FlaskForm):
     zipcode = StringField('Zipcode',validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+class AnimalForm(FlaskForm):
+    animaltype = StringField("Animal Type", validators=[DataRequired()])
+    animalname = StringField("Animal Name", validators=[DataRequired()])
+    animalgender = SelectField("Animal Gender",choices=[("Male, Male"),("Female, Female")])
+    animalage = IntegerField("Animal Age", validators=[DataRequired()])
+    submit = SubmitField('Submit')
