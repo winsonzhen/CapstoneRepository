@@ -106,6 +106,8 @@ class Animal(Document):
     animalname = StringField()
     animalgender = StringField()
     animalage = IntField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
 
     meta = {
         'ordering': ['-createdate']

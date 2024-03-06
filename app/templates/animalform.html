@@ -13,31 +13,31 @@
 
         
         <form method=post>
-            {{ form.hidden_tag() }}
+            <!-- {{ form.hidden_tag() }} -->
             <p>
-                {{ form.subject.label }} <br>
-                {{ form.subject(size=64) }}
+                {{ form.animaltype.label }} <br>
+                {{ form.animaltype(size=64) }}
                 <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
+                {% for error in form.animaltype.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 Add your comments here <br>
-                {{ form.content(cols=64, rows=10) }}
+                {{ form.animalname(cols=64, rows=10) }}
                 <!--List the errors for this field-->
-                {% for error in form.content.errors %}
+                {% for error in form.animalname.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <!-- <p>
                 {{ form.tag.label }} <br>
                 {{ form.tag(size=64) }}
-                <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
+                List the errors for this field
+                {% for error in form.animaltype.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
-            </p>
+            </p> -->
              <p>
                 <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
                 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>

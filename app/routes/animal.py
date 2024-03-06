@@ -95,8 +95,8 @@ def animalNew():
         newAnimal = Animal(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            subject = form.subject.data,
-            content = form.content.data,
+            animaltype = form.animaltype.data,
+            animalname = form.animalname.data,
             tag = form.tag.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
@@ -169,45 +169,45 @@ def animalEdit(animalID):
 # about how comments are related to blogs.  Additionally, take a look at data.py to see how the
 # relationship is defined in the Blog and the Comment collections.
 
-@app.route('/comment/new/<animalID>', methods=['GET', 'POST'])
-@login_required
-def commentNew(animalID):
-    animal = Animal.objects.get(id=animalID)
-    form = CommentForm()
-    if form.validate_on_submit():
-        newComment = Comment(
-            author = current_user.id,
-            animal = animalID,
-            content = form.content.data
-        )
-        newComment.save()
-        return redirect(url_for('animal',animalID=animalID))
-    return render_template('commentform.html',form=form,animal=animal)
+# @app.route('/comment/new/<animalID>', methods=['GET', 'POST'])
+# @login_required
+# def commentNew(animalID):
+#     animal = Animal.objects.get(id=animalID)
+#     form = CommentForm()
+#     if form.validate_on_submit():
+#         newComment = Comment(
+#             author = current_user.id,
+#             animal = animalID,
+#             content = form.content.data
+#         )
+#         newComment.save()
+#         return redirect(url_for('animal',animalID=animalID))
+#     return render_template('commentform.html',form=form,animal=animal)
 
-@app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
-@login_required
-def commentEdit(commentID):
-    editComment = Comment.objects.get(id=commentID)
-    if current_user != editComment.author:
-        flash("You can't edit a comment you didn't write.")
-        return redirect(url_for('animal',animalID=editComment.animal.id))
-    animal = Animal.objects.get(id=editComment.animal.id)
-    form = CommentForm()
-    if form.validate_on_submit():
-        editComment.update(
-            content = form.content.data,
-            modifydate = dt.datetime.utcnow
-        )
-        return redirect(url_for('animal',animalID=editComment.animal.id))
+# @app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
+# @login_required
+# def commentEdit(commentID):
+#     editComment = Comment.objects.get(id=commentID)
+#     if current_user != editComment.author:
+#         flash("You can't edit a comment you didn't write.")
+#         return redirect(url_for('animal',animalID=editComment.animal.id))
+#     animal = Animal.objects.get(id=editComment.animal.id)
+#     form = CommentForm()
+#     if form.validate_on_submit():
+#         editComment.update(
+#             content = form.content.data,
+#             modifydate = dt.datetime.utcnow
+#         )
+#         return redirect(url_for('animal',animalID=editComment.animal.id))
 
-    form.content.data = editComment.content
+#     form.content.data = editComment.content
 
-    return render_template('commentform.html',form=form,animal=animal)   
+#     return render_template('commentform.html',form=form,animal=animal)   
 
-@app.route('/comment/delete/<commentID>')
-@login_required
-def commentDelete(commentID): 
-    deleteComment = Comment.objects.get(id=commentID)
-    deleteComment.delete()
-    flash('The comments was deleted.')
-    return redirect(url_for('animal',animalID=deleteComment.animal.id)) 
+# @app.route('/comment/delete/<commentID>')
+# @login_required
+# def commentDelete(commentID): 
+#     deleteComment = Comment.objects.get(id=commentID)
+#     deleteComment.delete()
+#     flash('The comments was deleted.')
+#     return redirect(url_for('animal',animalID=deleteComment.animal.id)) 
